@@ -73,7 +73,7 @@
         <div id="#intromodedemploi">Select countries:
         </div>
         <div id="selCountry">
-            <select id="country_dropdown" data-maximum-selection-length="2"  multiple="multiple">
+            <select id="country_dropdown"onchange="updateChart(value)"><!--</select> data-maximum-selection-length="2"  multiple="multiple">-->
                <!-- <option value="OTO" selected="selected">OECD - Total</option>-->
             </select>
         </div>
@@ -217,7 +217,7 @@
 
 
         function launchViz(){
-            updateChart();
+            updateChart("OTO");
             
         }
 
@@ -258,8 +258,7 @@
         }
 
        
-        function updateChart(){
-
+        function updateChart(value){
 
 
 
@@ -285,7 +284,7 @@
             
 
 
-            selCountries=$('#country_dropdown').select2("val");
+            selCountries=[value];//$('#country_dropdown').select2("val");
             selindic = "UNR"
             
             var data1= allScenario1.filter(function(d){ return (d.LOCATION== selCountries[0] && d.VARIABLE== selindic && dateParser(d.TIME) >= dateParser(startChart)) || (d.LOCATION == selCountries[1] && d.VARIABLE == selindic && dateParser(d.TIME) >= dateParser(startChart));})
@@ -370,9 +369,9 @@
                             .attr("fill", "none"/*"#8DCD79"*/)
                             .attr("stroke", function (d) { 
                                 if (i=="0")
-                                    return "#32A674"
+                                    return "#00b5cb"
                                 else 
-                                    return "#98d2b9"
+                                    return "#7fdae5"
                             })
                             .attr("stroke-width", "5px")
                             .attr("opacity", 1)
@@ -515,7 +514,7 @@
                                     x: x(dateParser(date1)),
                                     y: y(parseFloat(data1.filter(function (d) { return d.TIME == date1 && d.LOCATION == selCountries[i]; })[0].Scenario1Val)),
                                     dy: coord1,
-                                    dx: coord3
+                                    dx: coord2
                                 }
                             ]
                         }
@@ -575,7 +574,7 @@
                         scenario1SVG
                             .append("g")
                             .attr("opacity", 1)
-                            .attr("class","singleAnnot")
+                            .attr("class","doubleAnnot")
                             
                             .call(makeAnnotationSingle)
 
@@ -586,7 +585,7 @@
                         scenario1SVG
                             .append("g")
                             .attr("opacity", 1)
-                            .attr("class", "doubleAnnot")               
+                            .attr("class", "singleAnnot")               
                             .call(makeAnnotationDouble)
 
 
@@ -724,12 +723,13 @@
     //Comparison Charts
     ////////////////////
 
+    
 
 
-        $("#country_dropdown").change(function () {
+       /* $("#country_dropdown").change(function () {
             updateChart();
-            updateButton();
-        });
+            //updateButton();
+        });*/
 
 
   
@@ -747,7 +747,7 @@
             document.getElementById("shareLink").style.display = 'none';
         })
 
-    $(window).on('resize', function () {  updateChart();; });
+    $(window).on('resize', function () {  updateChart(document.getElementById("country_dropdown").options[document.getElementById("country_dropdown").selectedIndex].value);; });
     </script>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
