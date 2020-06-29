@@ -359,7 +359,7 @@
                     scenario1SVG.append("g")
                         .attr("class", "axisContext")
                         .call(d3.axisLeft(y).tickFormat(function (d) {
-                            return y.tickFormat(10, d3.format(".1f"))(d) + "%"
+                            return y.tickFormat(10, d3.format(".0f"))(d) + "%"
                         }).tickSize(-(width)));
 
                     for (i = 0; i < selCountries.length; i++) {
@@ -659,7 +659,7 @@
                                     .duration(100)
                                     .style("opacity", 1);
 
-                                var htmlText = "<b>" + d.TIME + "</b><br/><b>&nbsp;"+ countryName(d.LOCATION) + "</b><br>&nbsp;Single-hit scenario: " +  Math.round(d.Scenario1Val*10)/10+ "%<br>&nbsp;Double-hit scenario: " +  Math.round(d.Scenario2Val*10)/10+ "%<br/><br/><b>&nbsp;" + d_1.Country + "</b><br>&nbsp;Single-hit scenario: " +  Math.round(d_1.Scenario1Val *10)/10+ "%<br>&nbsp;Double-hit scenario: " +  Math.round(d_1.Scenario2Val*10)/10 + "%";
+                                var htmlText = "<b>" + d.TIME + "</b><br/><b>"+ countryName(d.LOCATION) + "</b><br>&nbsp;Single-hit scenario: " +  Math.round(d.Scenario1Val*10)/10+ "%<br>&nbsp;Double-hit scenario: " +  Math.round(d.Scenario2Val*10)/10+ "%<br/><br/><b>&nbsp;" + d_1.Country + "</b><br>&nbsp;Single-hit scenario: " +  Math.round(d_1.Scenario1Val *10)/10+ "%<br>&nbsp;Double-hit scenario: " +  Math.round(d_1.Scenario2Val*10)/10 + "%";
                                 
                                 if(event.pageX < width - 75){
                                     divMap.html(htmlText)
@@ -676,7 +676,7 @@
                                     .duration(100)
                                     .style("opacity", 1);
                                 
-                                var htmlText = "<b>" + d.TIME + "</b><br/><b>&nbsp;" + countryName(d.LOCATION) + "</b><br>Single-hit scenario: " +  Math.round(d.Scenario1Val*10)/10 + "%<br>Double-hit scenario: " + Math.round( d.Scenario2Val*10)/10 + "%";
+                                var htmlText = "<b>" + d.TIME + "</b><br/><b>" + countryName(d.LOCATION) + "</b><br>Single-hit scenario: " +  Math.round(d.Scenario1Val*10)/10 + "%<br>Double-hit scenario: " + Math.round( d.Scenario2Val*10)/10 + "%";
 
                                 if (event.pageX < width - 75) {
                                     divMap.html(htmlText)
