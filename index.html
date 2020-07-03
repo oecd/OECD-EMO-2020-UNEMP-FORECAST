@@ -69,22 +69,22 @@
 <body>
    <h1>Two possible jobs scenarios</h1>
     <h2>Quarterly data, projections from Q2-2020 forward</h2>
+    <img id="Share" src="img/share.svg" alt="share">
     <!--<h2>Drag the cursor to see the impact of the Covid crisis depending on the scenario</h2>-->
     <div id="modedemploi">
-        <div id="#intromodedemploi">Select country:
+        <!--<div id="#intromodedemploi">Select country:
         </div>
         <div id="selCountry">
-            <select id="country_dropdown"onchange="updateChart(value)"><!--</select> data-maximum-selection-length="2"  multiple="multiple">-->
-               <!-- <option value="OTO" selected="selected">OECD - Total</option>-->
+            <select id="country_dropdown"onchange="updateChart(value)">
             </select>
-        </div>
+        </div>-->
        <!--- <div id="selIndicator">
             <select id="indicator_dropdown">
 
              </select>
         </div>-->
 
-        <img id="Share" src="img/share.svg" alt="share">
+        
     </div>
 
     <div id="scenario1" alt=""></div>
@@ -128,9 +128,9 @@
 
         var height;
         if (width > 650)
-            height = 450;//width * mapRatio;
+            height = 400;//width * mapRatio;
         else
-            height = 450; //width;
+            height = 400; //width;
 
 
             $('#country_dropdown').select2({ width: '180px' })
@@ -235,7 +235,9 @@
             
 
 
-                set_Cou_Dropdown(countryList);
+            // set_Cou_Dropdown(countryList);
+
+            updateChart("OTO"); // NO DROPDOWN
             
         }
         function countryName(ISOcode){
